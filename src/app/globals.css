@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  /* Background / Surface */
+  --color-base: #0A0A0B;
+  --color-surface-1: #1A1B1E;
+  --color-surface-2: #232427;
+  --color-surface-3: #2C2D31;
+
+  /* Brand accent */
+  --color-brand: #E91E8C;
+  --color-brand-dark: #C4166F;
+  --color-brand-indigo: #6366F1;
+  --color-brand-light: #FF5CB5;
+
+  /* Text */
+  --color-content: #F5F5F5;
+  --color-content-muted: #A0A0A8;
+  --color-content-dim: #6B6B73;
+
+  /* Borders */
+  --color-border: #2C2D31;
+  --color-border-bright: #3C3D41;
+
+  /* Status */
+  --color-success: #22C55E;
+
+  /* Typography */
+  --font-display: "Barlow Condensed", "Impact", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Spacing extras */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+}
+
+/* ─── Base styles ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #0A0A0B;
+  color: #F5F5F5;
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Brand gradient utility ─── */
+.gradient-brand {
+  background: linear-gradient(135deg, #E91E8C 0%, #6366F1 100%);
+}
+
+.gradient-brand-text {
+  background: linear-gradient(135deg, #E91E8C 0%, #6366F1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Display font utility ─── */
+.font-display {
+  font-family: "Barlow Condensed", "Impact", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1A1B1E;
+}
+::-webkit-scrollbar-thumb {
+  background: #3C3D41;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E91E8C;
+}
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid #E91E8C;
+  outline-offset: 2px;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(233, 30, 140, 0.3);
+  color: #F5F5F5;
+}
+
+/* ─── Prose overrides ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Barlow Condensed", "Impact", system-ui, sans-serif;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
