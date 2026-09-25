@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: SITE_URL },
   verification: {
-    google: "", // ← paste GSC verification token here
+    google: "9hYjKdCPbld8u2Vq6rG8HfXWzBrRLYUkwTMXFckAQgk",
   },
 };
 
