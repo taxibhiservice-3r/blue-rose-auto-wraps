@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import TrustBar from "@/components/sections/TrustBar";
 import CTASection from "@/components/sections/CTASection";
@@ -16,9 +17,9 @@ export const metadata: Metadata = buildPageMetadata({
 const FEATURED_SERVICES = getFeaturedServices().slice(0, 6);
 
 const SERVICE_STATS = [
-  { value: "5–7", unit: "Years", label: "Wrap lifespan (cast vinyl)" },
-  { value: "3–5", unit: "Days", label: "Typical full wrap turnaround" },
-  { value: "11", unit: "Cities", label: "Service area coverage" },
+  { value: "5–7", unit: "Yrs", label: "Cast vinyl wrap lifespan" },
+  { value: "3–5", unit: "Days", label: "Full wrap turnaround" },
+  { value: "11", unit: "Cities", label: "Lane County coverage" },
   { value: "100%", unit: "Cast", label: "No budget calendered film" },
 ];
 
@@ -33,24 +34,85 @@ const INDUSTRIES = [
   { name: "Enthusiast Builds", icon: "🏁" },
 ];
 
+// 6 hero images for the recent work strip — best/most visually striking
+const WORK_PREVIEW = [
+  {
+    src: "/images/portfolio/fleet-wrap-teal-tundra-pest-control-springfield-or.webp",
+    alt: "Teal commercial fleet wrap on Toyota Tundra — Blue Rose Wraps Springfield OR",
+    label: "Fleet Wrap",
+  },
+  {
+    src: "/images/portfolio/carbon-fiber-wrap-cadillac-team-install-springfield-or.webp",
+    alt: "Carbon fiber wrap installation on Cadillac CTS-V — Blue Rose Wraps Springfield OR",
+    label: "Carbon Fiber Wrap",
+  },
+  {
+    src: "/images/portfolio/food-truck-full-wrap-commercial-eugene-or.webp",
+    alt: "Full commercial food truck wrap — Blue Rose Wraps Eugene OR",
+    label: "Food Truck Wrap",
+  },
+  {
+    src: "/images/portfolio/color-change-wrap-blue-porsche-911-eugene-or.webp",
+    alt: "Blue color change wrap on Porsche 911 — Blue Rose Wraps Eugene OR",
+    label: "Color Change",
+  },
+  {
+    src: "/images/portfolio/full-truck-wrap-bliss-roofing-ford-f150-springfield-or.webp",
+    alt: "Full truck wrap for Bliss Roofing on Ford F-150 — Blue Rose Wraps Springfield OR",
+    label: "Full Truck Wrap",
+  },
+  {
+    src: "/images/portfolio/large-trailer-wrap-fleet-commercial-eugene-or.webp",
+    alt: "Large commercial trailer wrap installation — Blue Rose Wraps Eugene OR",
+    label: "Trailer Wrap",
+  },
+];
+
+// 4 images for the "Why Blue Rose" photo panel
+const WHY_PHOTOS = [
+  {
+    src: "/images/portfolio/vinyl-wrap-installation-process-blue-rose-springfield-or.webp",
+    alt: "Technician precision applying vinyl to hood — Blue Rose Wraps Springfield OR",
+  },
+  {
+    src: "/images/portfolio/color-change-wrap-team-corvette-springfield-or.webp",
+    alt: "Two-person team installing color change wrap on Corvette — Blue Rose Wraps Springfield OR",
+  },
+  {
+    src: "/images/portfolio/camo-wrap-racing-stripes-ford-maverick-eugene-or.webp",
+    alt: "Custom camo and racing stripe wrap on Ford Maverick — Blue Rose Wraps Eugene OR",
+  },
+  {
+    src: "/images/portfolio/van-wrap-commercial-branding-springfield-or.webp",
+    alt: "Commercial van wrap for Kitchen Tune-Up franchise — Blue Rose Wraps Springfield OR",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0B]">
+        {/* Real photo background */}
+        <Image
+          src="/images/portfolio/carbon-fiber-wrap-cadillac-team-install-springfield-or.webp"
+          alt="Professional vehicle wrap installation at Blue Rose Wraps & Graphics, Springfield OR"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-20"
+        />
+        {/* Layered dark gradient for text legibility */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(#E91E8C 1px, transparent 1px), linear-gradient(90deg, #E91E8C 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
+          className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B]/70 via-[#0A0A0B]/50 to-[#0A0A0B]"
           aria-hidden="true"
         />
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#E91E8C]/10 rounded-full blur-3xl" aria-hidden="true" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl" aria-hidden="true" />
+        {/* Accent glows */}
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#E91E8C]/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#1A1B1E] border border-[#2C2D31] rounded-full px-5 py-2 mb-8 text-sm text-[#A0A0A8]">
+          <div className="inline-flex items-center gap-2 bg-[#1A1B1E]/80 border border-[#2C2D31] backdrop-blur-sm rounded-full px-5 py-2 mb-8 text-sm text-[#A0A0A8]">
             <span className="w-2 h-2 bg-[#22C55E] rounded-full" aria-hidden="true" />
             <span>Springfield, OR — Serving all of Lane County</span>
           </div>
@@ -89,9 +151,10 @@ export default function HomePage() {
             </a>
           </div>
 
+          {/* Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {SERVICE_STATS.map((stat) => (
-              <div key={stat.label} className="bg-[#1A1B1E]/80 border border-[#2C2D31] rounded-2xl p-5">
+              <div key={stat.label} className="bg-[#1A1B1E]/80 backdrop-blur-sm border border-[#2C2D31] rounded-2xl p-5">
                 <div className="font-display text-3xl font-bold text-[#F5F5F5]">
                   {stat.value}{" "}
                   <span className="gradient-brand-text text-lg">{stat.unit}</span>
@@ -110,8 +173,57 @@ export default function HomePage() {
       {/* ── TRUST BAR ───────────────────────────────────────────────────── */}
       <TrustBar />
 
+      {/* ── RECENT WORK PREVIEW ─────────────────────────────────────────── */}
+      <section className="py-20 px-4 bg-[#0A0A0B]" aria-labelledby="work-preview-heading">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+            <div>
+              <div className="text-[#E91E8C] text-sm font-semibold uppercase tracking-widest mb-3">Recent Work</div>
+              <h2 id="work-preview-heading" className="font-display text-4xl sm:text-5xl font-bold text-[#F5F5F5]">
+                Springfield wraps,<br />straight from the shop.
+              </h2>
+            </div>
+            <Link
+              href="/portfolio"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[#F5F5F5] border border-[#3C3D41] hover:border-[#E91E8C] hover:text-[#E91E8C] transition-colors"
+            >
+              See all 20+ projects
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+            {WORK_PREVIEW.map((item, idx) => (
+              <Link
+                key={item.src}
+                href="/portfolio"
+                className={`group relative overflow-hidden rounded-xl bg-[#1A1B1E] ${idx === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+              >
+                <div className={`relative w-full ${idx === 0 ? "aspect-[16/9] sm:aspect-[2/1] lg:aspect-[4/3]" : "aspect-[4/3]"}`}>
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-3">
+                    <span className="inline-block px-2.5 py-1 rounded-full text-xs font-semibold text-white bg-[#0A0A0B]/70 backdrop-blur-sm border border-white/10">
+                      {item.label}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FEATURED SERVICES ───────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-[#0A0A0B]" aria-labelledby="services-heading">
+      <section className="py-20 px-4 bg-[#1A1B1E] border-y border-[#2C2D31]" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <div>
@@ -136,7 +248,7 @@ export default function HomePage() {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group bg-[#1A1B1E] border border-[#2C2D31] rounded-2xl p-7 hover:border-[#E91E8C]/50 hover:bg-[#1E1F24] transition-all duration-200"
+                className="group bg-[#232427] border border-[#2C2D31] rounded-2xl p-7 hover:border-[#E91E8C]/50 hover:bg-[#2A2B30] transition-all duration-200"
               >
                 <div className="text-3xl mb-4" aria-hidden="true">{service.icon}</div>
                 <h3 className="font-display text-xl font-bold text-[#F5F5F5] mb-2">
@@ -158,7 +270,7 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY US ──────────────────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-[#1A1B1E] border-y border-[#2C2D31]" aria-labelledby="why-heading">
+      <section className="py-20 px-4 bg-[#0A0A0B]" aria-labelledby="why-heading">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -183,17 +295,20 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: "🎯", title: "Precision Installation", desc: "Certified installers. Post-heat formed edges. Every seam inspected before delivery." },
-                { icon: "🏭", title: "Climate-Controlled Shop", desc: "Temperature-controlled environment year-round for consistent installation quality." },
-                { icon: "🎨", title: "In-House Design", desc: "Designers who understand vehicle geometry and how vinyl behaves on curved panels." },
-                { icon: "🔄", title: "You Own Your Files", desc: "Print-ready files delivered to you. No held-hostage artwork. No dependency on us for reprints." },
-              ].map((item) => (
-                <div key={item.title} className="bg-[#232427] border border-[#2C2D31] rounded-2xl p-6">
-                  <div className="text-2xl mb-3" aria-hidden="true">{item.icon}</div>
-                  <h3 className="font-display text-lg font-bold text-[#F5F5F5] mb-2">{item.title}</h3>
-                  <p className="text-sm text-[#A0A0A8] leading-relaxed">{item.desc}</p>
+            {/* Real photo grid replacing icon cards */}
+            <div className="grid grid-cols-2 gap-3">
+              {WHY_PHOTOS.map((photo, idx) => (
+                <div
+                  key={idx}
+                  className={`relative overflow-hidden rounded-2xl bg-[#1A1B1E] ${idx === 0 ? "col-span-2 aspect-[16/7]" : "aspect-square"}`}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               ))}
             </div>
@@ -202,8 +317,18 @@ export default function HomePage() {
       </section>
 
       {/* ── FLEET / COMMERCIAL ──────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-[#0A0A0B]" aria-labelledby="fleet-heading">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-20 px-4 overflow-hidden" aria-labelledby="fleet-heading">
+        {/* Background image for fleet section */}
+        <Image
+          src="/images/portfolio/fleet-wrap-box-truck-commercial-eugene-or.webp"
+          alt="Commercial fleet vehicle wrap in Eugene Oregon"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-[#0A0A0B]/80" aria-hidden="true" />
+
+        <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <div className="text-[#E91E8C] text-sm font-semibold uppercase tracking-widest mb-3">Commercial & Fleet</div>
             <h2 id="fleet-heading" className="font-display text-4xl sm:text-5xl font-bold text-[#F5F5F5] mb-4">
@@ -214,11 +339,24 @@ export default function HomePage() {
             </p>
           </div>
 
+          {/* Fleet photo strip */}
+          <div className="grid grid-cols-3 gap-3 mb-10 max-w-3xl mx-auto">
+            {[
+              { src: "/images/portfolio/fleet-wrap-teal-tundra-pest-control-springfield-or.webp", alt: "Teal commercial fleet wrap — Springfield OR" },
+              { src: "/images/portfolio/van-wrap-commercial-branding-springfield-or.webp", alt: "Commercial van wrap — Springfield OR" },
+              { src: "/images/portfolio/commercial-truck-lettering-vehicle-graphics-springfield-or.webp", alt: "Commercial truck lettering — Springfield OR" },
+            ].map((img) => (
+              <div key={img.src} className="relative aspect-[4/3] rounded-xl overflow-hidden">
+                <Image src={img.src} alt={img.alt} fill sizes="33vw" className="object-cover" />
+              </div>
+            ))}
+          </div>
+
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
             {INDUSTRIES.map((ind) => (
               <div
                 key={ind.name}
-                className="bg-[#1A1B1E] border border-[#2C2D31] rounded-xl px-4 py-4 flex items-center gap-3 text-sm text-[#A0A0A8]"
+                className="bg-[#1A1B1E]/80 backdrop-blur-sm border border-[#2C2D31] rounded-xl px-4 py-4 flex items-center gap-3 text-sm text-[#A0A0A8]"
               >
                 <span className="text-xl" aria-hidden="true">{ind.icon}</span>
                 {ind.name}
@@ -228,7 +366,7 @@ export default function HomePage() {
 
           <div className="text-center">
             <Link
-              href="/services/fleet-wraps"
+              href="/services/fleet-vehicle-wraps"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white gradient-brand hover:opacity-90 transition-opacity text-lg"
             >
               See fleet wrap programs

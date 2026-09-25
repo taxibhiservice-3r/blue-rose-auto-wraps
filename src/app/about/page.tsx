@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import CTASection from "@/components/sections/CTASection";
 import Breadcrumb from "@/components/sections/Breadcrumb";
@@ -25,10 +26,11 @@ export default function AboutPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <section className="pt-32 pb-16 px-4 bg-[#0A0A0B] border-b border-[#2C2D31]">
-        <div className="max-w-4xl mx-auto">
+      {/* ── HEADER ─────────────────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-0 px-4 bg-[#0A0A0B] overflow-hidden">
+        <div className="max-w-7xl mx-auto">
           <Breadcrumb items={BREADCRUMBS} />
-          <div className="mt-6">
+          <div className="mt-6 mb-10">
             <div className="text-[#E91E8C] text-sm font-semibold uppercase tracking-widest mb-3">About Us</div>
             <h1 className="font-display text-5xl sm:text-6xl font-bold text-[#F5F5F5] mb-4">
               Built in Springfield,<br />Built on Precision.
@@ -36,6 +38,22 @@ export default function AboutPage() {
             <p className="text-xl text-[#A0A0A8] max-w-2xl leading-relaxed">
               Blue Rose Wraps &amp; Graphics is Springfield&apos;s dedicated vehicle wrap and graphics studio — a specialist shop, not a print-it-and-stick-it operation.
             </p>
+          </div>
+
+          {/* Shop exterior photo — full width */}
+          <div className="relative w-full aspect-[21/7] rounded-t-2xl overflow-hidden border-x border-t border-[#2C2D31]">
+            <Image
+              src="/images/portfolio/blue-rose-wraps-graphics-shop-exterior-springfield-or.webp"
+              alt="Blue Rose Wraps & Graphics shop exterior at 3436 Olympic St Suite 300, Springfield OR"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/60 to-transparent" />
+            <div className="absolute bottom-5 left-6">
+              <span className="text-sm font-semibold text-white/90">3436 Olympic St, Suite 300 · Springfield, OR 97478</span>
+            </div>
           </div>
         </div>
       </section>
@@ -45,7 +63,7 @@ export default function AboutPage() {
         {/* Who we are */}
         <section>
           <h2 className="font-display text-3xl font-bold text-[#F5F5F5] mb-6">Who We Are</h2>
-          <div className="prose prose-invert max-w-none space-y-4 text-[#A0A0A8] leading-relaxed">
+          <div className="space-y-4 text-[#A0A0A8] leading-relaxed">
             <p>
               Blue Rose Wraps &amp; Graphics operates out of 3436 Olympic St, Suite 300, Springfield, OR — a dedicated wrap and graphics production facility in the heart of the Eugene–Springfield metro. We&apos;re a specialist shop: every project that comes through our doors is a wrap, a graphic, or a sign — not a sideline business alongside oil changes or detailing.
             </p>
@@ -74,10 +92,24 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Shop */}
+        {/* Shop — now with real photos */}
         <section>
           <h2 className="font-display text-3xl font-bold text-[#F5F5F5] mb-6">Our Shop</h2>
-          <div className="grid sm:grid-cols-2 gap-5 mb-6">
+
+          {/* 3-column process photo strip */}
+          <div className="grid grid-cols-3 gap-3 mb-8">
+            {[
+              { src: "/images/portfolio/vinyl-wrap-precision-cutting-process-springfield-or.webp", alt: "Technician precision cutting vinyl — Blue Rose Wraps Springfield OR" },
+              { src: "/images/portfolio/ppf-installation-truck-blue-rose-auto-springfield-or.webp", alt: "Paint protection film installation in Blue Rose shop — Springfield OR" },
+              { src: "/images/portfolio/vinyl-wrap-installation-process-blue-rose-springfield-or.webp", alt: "Vinyl being applied to hood in Blue Rose controlled shop — Springfield OR" },
+            ].map((img) => (
+              <div key={img.src} className="relative aspect-[4/3] rounded-xl overflow-hidden">
+                <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 33vw, 25vw" className="object-cover" />
+              </div>
+            ))}
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5">
             {[
               { icon: "🌡️", title: "Temperature-Controlled", desc: "Vinyl application is temperature-sensitive. Cold vinyl is stiff and doesn't stretch properly. Hot vinyl is unforgiving. Our shop stays at the right temperature year-round." },
               { icon: "💡", title: "Proper Lighting", desc: "Contamination, bubbles, and lifting edges are visible under proper shop lighting. We inspect every install under full lighting before delivery — not in a dimly lit bay." },
@@ -93,6 +125,40 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Team in action */}
+        <section>
+          <h2 className="font-display text-3xl font-bold text-[#F5F5F5] mb-6">The Team at Work</h2>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden col-span-2">
+              <Image
+                src="/images/portfolio/carbon-fiber-wrap-cadillac-team-install-springfield-or.webp"
+                alt="Blue Rose Wraps team applying carbon fiber vinyl wrap to Cadillac CTS-V — Springfield OR"
+                fill
+                sizes="(max-width: 768px) 100vw, 800px"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+              <Image
+                src="/images/portfolio/color-change-wrap-team-corvette-springfield-or.webp"
+                alt="Blue Rose Wraps team applying color change wrap to Corvette — Springfield OR"
+                fill
+                sizes="50vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+              <Image
+                src="/images/portfolio/large-trailer-wrap-fleet-commercial-eugene-or.webp"
+                alt="Blue Rose Wraps team installing large commercial trailer wrap — Eugene OR"
+                fill
+                sizes="50vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Process */}
         <section>
           <h2 className="font-display text-3xl font-bold text-[#F5F5F5] mb-6">How Every Project Works</h2>
@@ -102,7 +168,7 @@ export default function AboutPage() {
               { step: "Design Development", detail: "For custom graphics, we develop artwork and present digital mockups — rendered on your actual vehicle geometry, not a generic template." },
               { step: "Material Selection", detail: "We confirm the vinyl film, finish, and laminate appropriate for your project and application." },
               { step: "Production", detail: "Printing and cutting done in-house. Large-format digital print, precision plotter cutting, and hand-finishing." },
-              { step: "Vehicle Prep", detail: "Professional wash, clay bar, and surface decontamination — even on vehicles that look clean. Surface prep is where most installers cut corners. We don&apos;t." },
+              { step: "Vehicle Prep", detail: "Professional wash, clay bar, and surface decontamination — even on vehicles that look clean. Surface prep is where most installers cut corners. We don't." },
               { step: "Installation", detail: "Panel-by-panel application with post-heat forming at every edge, seam, and body recess. Two-person team on complex installs." },
               { step: "QC Inspection", detail: "Every seam, edge, and panel inspected under shop lighting before we call you for pickup. If we find anything, we fix it before you arrive." },
             ].map((item, idx) => (
