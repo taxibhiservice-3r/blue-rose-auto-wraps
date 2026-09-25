@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Breadcrumb from "@/components/sections/Breadcrumb";
 import { BUSINESS } from "@/data/business";
 import { SERVICES } from "@/data/services";
@@ -9,12 +9,12 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Get a Free Vehicle Wrap Quote — Blue Rose Wraps, Springfield OR",
   description:
     "Request a free, no-obligation vehicle wrap quote from Blue Rose Wraps & Graphics in Springfield, OR. Full wraps, fleet programs, commercial graphics. Response within 1 business day.",
-  canonical: "https://blueroseauto.com/get-a-quote",
+  canonical: "https://www.bluerosewrapsandgraphics.com/get-a-quote",
 });
 
 const BREADCRUMBS = [
-  { name: "Home", url: "https://blueroseauto.com" },
-  { name: "Get a Quote", url: "https://blueroseauto.com/get-a-quote" },
+  { name: "Home", url: "https://www.bluerosewrapsandgraphics.com" },
+  { name: "Get a Quote", url: "https://www.bluerosewrapsandgraphics.com/get-a-quote" },
 ];
 
 const VEHICLE_TYPES = [

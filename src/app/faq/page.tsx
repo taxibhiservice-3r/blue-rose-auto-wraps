@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { FAQS, getFaqsByCategory } from "@/data/faqs";
 import CTASection from "@/components/sections/CTASection";
 import FAQAccordion from "@/components/sections/FAQAccordion";
@@ -10,12 +10,12 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Vehicle Wrap FAQ — Eugene & Springfield, OR | Blue Rose Wraps",
   description:
     "Answers to the most common vehicle wrap questions: cost, lifespan, care, fleet programs, paint safety, and more. Blue Rose Wraps & Graphics — Springfield, OR.",
-  canonical: "https://blueroseauto.com/faq",
+  canonical: "https://www.bluerosewrapsandgraphics.com/faq",
 });
 
 const BREADCRUMBS = [
-  { name: "Home", url: "https://blueroseauto.com" },
-  { name: "FAQ", url: "https://blueroseauto.com/faq" },
+  { name: "Home", url: "https://www.bluerosewrapsandgraphics.com" },
+  { name: "FAQ", url: "https://www.bluerosewrapsandgraphics.com/faq" },
 ];
 
 const FAQ_SECTIONS = [

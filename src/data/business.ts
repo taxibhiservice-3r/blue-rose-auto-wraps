@@ -20,9 +20,9 @@ export const BUSINESS = {
   phone: "(541) 520-3807",
   phoneRaw: "+15415203807",
   phoneTel: "tel:+15415203807",
-  email: "info@blueroseauto.com",
-  website: "https://blueroseauto.com",
-  domain: "blueroseauto.com",
+  email: "info@bluerosewrapsandgraphics.com",
+  website: "https://www.bluerosewrapsandgraphics.com",
+  domain: "www.bluerosewrapsandgraphics.com",
 
   hours: {
     monday:    { open: "08:00", close: "17:00", label: "8:00 AM – 5:00 PM" },

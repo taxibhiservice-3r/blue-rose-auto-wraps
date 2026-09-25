@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/sections/CTASection";
 import Breadcrumb from "@/components/sections/Breadcrumb";
@@ -10,12 +10,12 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Vehicle Wrap Portfolio — Blue Rose Wraps & Graphics, Springfield OR",
   description:
     "Real vehicle wraps and graphics projects by Blue Rose Wraps & Graphics in Springfield, OR. Full wraps, fleet graphics, color changes, and commercial signage serving Eugene and Lane County.",
-  canonical: "https://blueroseauto.com/portfolio",
+  canonical: "https://www.bluerosewrapsandgraphics.com/portfolio",
 });
 
 const BREADCRUMBS = [
-  { name: "Home", url: "https://blueroseauto.com" },
-  { name: "Portfolio", url: "https://blueroseauto.com/portfolio" },
+  { name: "Home", url: "https://www.bluerosewrapsandgraphics.com" },
+  { name: "Portfolio", url: "https://www.bluerosewrapsandgraphics.com/portfolio" },
 ];
 
 const SERVICE_FILTERS = SERVICES.filter((s) => s.featured).map((s) => ({

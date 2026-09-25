@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Breadcrumb from "@/components/sections/Breadcrumb";
 import { BUSINESS } from "@/data/business";
 import { buildPageMetadata } from "@/lib/metadata";
@@ -8,12 +8,12 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Contact Blue Rose Wraps & Graphics — Springfield, OR",
   description:
     "Contact Blue Rose Wraps & Graphics at (541) 520-3807. Located at 3436 Olympic St, Suite 300, Springfield, OR 97478. Open Mon–Fri 8AM–5PM, Sat 10AM–5PM.",
-  canonical: "https://blueroseauto.com/contact",
+  canonical: "https://www.bluerosewrapsandgraphics.com/contact",
 });
 
 const BREADCRUMBS = [
-  { name: "Home", url: "https://blueroseauto.com" },
-  { name: "Contact", url: "https://blueroseauto.com/contact" },
+  { name: "Home", url: "https://www.bluerosewrapsandgraphics.com" },
+  { name: "Contact", url: "https://www.bluerosewrapsandgraphics.com/contact" },
 ];
 
 const HOURS = [

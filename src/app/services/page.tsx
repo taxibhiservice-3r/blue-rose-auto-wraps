@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { SERVICES, SERVICE_CATEGORIES } from "@/data/services";
 import CTASection from "@/components/sections/CTASection";
@@ -10,12 +10,12 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Vehicle Wrap & Graphics Services in Eugene–Springfield, OR",
   description:
     "Full vehicle wraps, partial wraps, color change wraps, fleet graphics, storefront signage, and more. Blue Rose Wraps & Graphics — Springfield, OR. Serving all of Lane County.",
-  canonical: "https://blueroseauto.com/services",
+  canonical: "https://www.bluerosewrapsandgraphics.com/services",
 });
 
 const BREADCRUMBS = [
-  { name: "Home", url: "https://blueroseauto.com" },
-  { name: "Services", url: "https://blueroseauto.com/services" },
+  { name: "Home", url: "https://www.bluerosewrapsandgraphics.com" },
+  { name: "Services", url: "https://www.bluerosewrapsandgraphics.com/services" },
 ];
 
 export default function ServicesPage() {

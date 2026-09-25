@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { LOCATIONS } from "@/data/locations";
 import CTASection from "@/components/sections/CTASection";
@@ -11,12 +11,12 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Vehicle Wrap Service Areas in Lane County, OR | Blue Rose Wraps",
   description:
     "Blue Rose Wraps & Graphics serves Eugene, Springfield, Cottage Grove, Creswell, Junction City, Coburg, Veneta, and 4 more Lane County communities from our Springfield shop.",
-  canonical: "https://blueroseauto.com/locations",
+  canonical: "https://www.bluerosewrapsandgraphics.com/locations",
 });
 
 const BREADCRUMBS = [
-  { name: "Home", url: "https://blueroseauto.com" },
-  { name: "Service Areas", url: "https://blueroseauto.com/locations" },
+  { name: "Home", url: "https://www.bluerosewrapsandgraphics.com" },
+  { name: "Service Areas", url: "https://www.bluerosewrapsandgraphics.com/locations" },
 ];
 
 export default function LocationsPage() {

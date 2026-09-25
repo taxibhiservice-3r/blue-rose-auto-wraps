@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileCTABar from "@/components/layout/MobileCTABar";
-import { buildLocalBusinessSchema, buildWebsiteSchema } from "@/lib/schema";
+import { buildLocalBusinessSchema, buildWebsiteSchema, buildOrganizationSchema } from "@/lib/schema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +19,7 @@ const barlowCondensed = Barlow_Condensed({
   display: "swap",
 });
 
-const SITE_URL = "https://blueroseauto.com";
+const SITE_URL = "https://www.bluerosewrapsandgraphics.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -92,6 +92,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const localBusinessSchema = buildLocalBusinessSchema();
   const websiteSchema = buildWebsiteSchema();
+  const organizationSchema = buildOrganizationSchema();
 
   return (
     <html lang="en" className={`${inter.variable} ${barlowCondensed.variable}`}>
@@ -103,6 +104,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body className="bg-[#0A0A0B] text-[#F5F5F5]">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/sections/CTASection";
 import Breadcrumb from "@/components/sections/Breadcrumb";
@@ -10,12 +10,12 @@ export const metadata: Metadata = buildPageMetadata({
   title: "About Blue Rose Wraps & Graphics — Springfield, OR",
   description:
     "Blue Rose Wraps & Graphics is Springfield, Oregon's precision vehicle wrap and graphics studio. Learn about our shop, materials, process, and the Blue Rose Auto Care family.",
-  canonical: "https://blueroseauto.com/about",
+  canonical: "https://www.bluerosewrapsandgraphics.com/about",
 });
 
 const BREADCRUMBS = [
-  { name: "Home", url: "https://blueroseauto.com" },
-  { name: "About", url: "https://blueroseauto.com/about" },
+  { name: "Home", url: "https://www.bluerosewrapsandgraphics.com" },
+  { name: "About", url: "https://www.bluerosewrapsandgraphics.com/about" },
 ];
 
 export default function AboutPage() {

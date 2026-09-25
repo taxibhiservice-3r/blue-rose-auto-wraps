@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { BUSINESS } from "@/data/business";
 
-const SITE_URL = "https://blueroseauto.com";
+const SITE_URL = "https://www.bluerosewrapsandgraphics.com";
 const DEFAULT_OG_IMAGE = "/images/og-default.jpg";
 
 export const DEFAULT_METADATA: Metadata = {

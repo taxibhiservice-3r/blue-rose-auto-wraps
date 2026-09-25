@@ -1,8 +1,8 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 import { SERVICES } from "@/data/services";
 import { LOCATIONS } from "@/data/locations";
 
-const SITE_URL = "https://blueroseauto.com";
+const SITE_URL = "https://www.bluerosewrapsandgraphics.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

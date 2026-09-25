@@ -1,7 +1,17 @@
 import { BUSINESS } from "@/data/business";
 import type { Service, Location, FAQ, BreadcrumbItem } from "@/types";
 
-const SITE_URL = "https://blueroseauto.com";
+const SITE_URL = "https://www.bluerosewrapsandgraphics.com";
+
+const logoImageObject = {
+  "@type": "ImageObject",
+  "@id": `${SITE_URL}/#logo`,
+  url: `${SITE_URL}/images/Blue-Rose-Auto.webp`,
+  contentUrl: `${SITE_URL}/images/Blue-Rose-Auto.webp`,
+  width: 512,
+  height: 512,
+  caption: BUSINESS.name,
+};
 
 export function buildLocalBusinessSchema() {
   return {
@@ -14,6 +24,7 @@ export function buildLocalBusinessSchema() {
     url: SITE_URL,
     telephone: BUSINESS.phoneRaw,
     email: BUSINESS.email,
+    foundingDate: BUSINESS.founded,
     address: {
       "@type": "PostalAddress",
       streetAddress: `${BUSINESS.address.street}, ${BUSINESS.address.suite}`,
@@ -28,8 +39,18 @@ export function buildLocalBusinessSchema() {
       longitude: BUSINESS.geo.longitude,
     },
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "17:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "10:00", closes: "17:00" },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "17:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: "10:00",
+        closes: "17:00",
+      },
     ],
     areaServed: BUSINESS.serviceArea.map((city) => ({
       "@type": "City",
@@ -44,16 +65,34 @@ export function buildLocalBusinessSchema() {
       BUSINESS.social.facebook,
       BUSINESS.social.instagram,
       BUSINESS.social.youtube,
+      BUSINESS.gbpUrl,
     ],
-    image: `${SITE_URL}/images/og-default.jpg`,
-    logo: `${SITE_URL}/images/logo.svg`,
+    image: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/images/og-default.jpg`,
+      width: 1200,
+      height: 630,
+    },
+    logo: logoImageObject,
     priceRange: "$$",
     currenciesAccepted: "USD",
-    paymentAccepted: "Credit Card, Debit Card",
+    paymentAccepted: "Credit Card, Debit Card, Cash, Check",
     amenityFeature: [
       { "@type": "LocationFeatureSpecification", name: "Wheelchair Accessible Entrance", value: true },
       { "@type": "LocationFeatureSpecification", name: "Wheelchair Accessible Parking", value: true },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Vehicle Wrap & Graphics Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Full Vehicle Wraps" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fleet Vehicle Wraps" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Color Change Wraps" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Vehicle Graphics" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Storefront & Window Graphics" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Paint Protection Film" } },
+      ],
+    },
     parentOrganization: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#parent-org`,
@@ -79,6 +118,44 @@ export function buildLocalBusinessSchema() {
   };
 }
 
+export function buildOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: BUSINESS.name,
+    url: SITE_URL,
+    logo: logoImageObject,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: BUSINESS.phoneRaw,
+      contactType: "customer service",
+      areaServed: "US-OR",
+      availableLanguage: "English",
+      hoursAvailable: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "17:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Saturday"],
+          opens: "10:00",
+          closes: "17:00",
+        },
+      ],
+    },
+    sameAs: [
+      BUSINESS.social.facebook,
+      BUSINESS.social.instagram,
+      BUSINESS.social.youtube,
+      BUSINESS.gbpUrl,
+    ],
+  };
+}
+
 export function buildServiceSchema(service: Service) {
   return {
     "@context": "https://schema.org",
@@ -90,6 +167,8 @@ export function buildServiceSchema(service: Service) {
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}/#wraps-business`,
       name: BUSINESS.name,
+      telephone: BUSINESS.phoneRaw,
+      url: SITE_URL,
     },
     areaServed: {
       "@type": "GeoCircle",
@@ -98,10 +177,20 @@ export function buildServiceSchema(service: Service) {
         latitude: BUSINESS.geo.latitude,
         longitude: BUSINESS.geo.longitude,
       },
-      geoRadius: "50000",
+      geoRadius: "80467",
     },
     serviceType: service.name,
+    category: service.category,
     url: `${SITE_URL}/services/${service.slug}/`,
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/get-a-quote`,
+        actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
+      },
+      result: { "@type": "Reservation", name: "Free Quote Request" },
+    },
   };
 }
 
@@ -116,6 +205,8 @@ export function buildLocationSchema(location: Location) {
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}/#wraps-business`,
       name: BUSINESS.name,
+      telephone: BUSINESS.phoneRaw,
+      url: SITE_URL,
     },
     areaServed: {
       "@type": "City",
@@ -127,6 +218,15 @@ export function buildLocationSchema(location: Location) {
       },
     },
     url: `${SITE_URL}/locations/${location.slug}/`,
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/get-a-quote`,
+        actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
+      },
+      result: { "@type": "Reservation", name: "Free Quote Request" },
+    },
   };
 }
 
@@ -165,6 +265,12 @@ export function buildWebsiteSchema() {
     "@id": `${SITE_URL}/#website`,
     name: BUSINESS.name,
     url: SITE_URL,
+    description: BUSINESS.description,
+    inLanguage: "en-US",
+    publisher: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+    },
     potentialAction: {
       "@type": "SearchAction",
       target: {
