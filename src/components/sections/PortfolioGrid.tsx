@@ -215,13 +215,14 @@ export default function PortfolioGrid() {
             key={item.src}
             className="break-inside-avoid group relative overflow-hidden rounded-xl bg-[#1A1B1E] border border-[#2C2D31] hover:border-[#E91E8C]/40 transition-all duration-300"
           >
-            <div className="relative w-full aspect-[4/3]">
+            <div className="overflow-hidden w-full aspect-[4/3]">
               <Image
                 src={item.src}
                 alt={item.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                width={800}
+                height={600}
+                unoptimized
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               {item.featured && (
                 <div className="absolute top-3 left-3">
