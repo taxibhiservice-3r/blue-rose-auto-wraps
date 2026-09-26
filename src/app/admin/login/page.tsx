@@ -76,8 +76,7 @@ export default function AdminLoginPage() {
         </form>
 
         <p className="text-center text-xs text-[#6B6B73] mt-6">
-          Default password: <code className="text-[#A0A0A8]">bluerose2024</code>
-          <br />Set <code className="text-[#A0A0A8]">ADMIN_PASSWORD</code> in your Vercel env vars to change it.
+          Set <code className="text-[#A0A0A8]">ADMIN_PASSWORD</code> in your Vercel env vars.
         </p>
       </div>
     </div>
