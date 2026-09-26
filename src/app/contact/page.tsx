@@ -1,5 +1,6 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Breadcrumb from "@/components/sections/Breadcrumb";
+import ContactForm from "@/components/forms/ContactForm";
 import { BUSINESS } from "@/data/business";
 import { buildPageMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema } from "@/lib/schema";
@@ -42,7 +43,7 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className="text-xl text-[#A0A0A8] max-w-2xl">
-              Call us, stop by, or request a quote online. We respond to all quote requests within one business day.
+              Call us, stop by, or send a message. We respond to all inquiries within one business day.
             </p>
           </div>
         </div>
@@ -51,7 +52,7 @@ export default function ContactPage() {
       <div className="max-w-5xl mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12">
 
-          {/* Contact info */}
+          {/* Left: info + hours + social */}
           <div className="space-y-8">
             <div>
               <h2 className="font-display text-2xl font-bold text-[#F5F5F5] mb-5">Contact Information</h2>
@@ -97,7 +98,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Hours */}
             <div>
               <h2 className="font-display text-2xl font-bold text-[#F5F5F5] mb-5">Business Hours</h2>
               <dl className="bg-[#1A1B1E] border border-[#2C2D31] rounded-xl overflow-hidden">
@@ -113,7 +113,6 @@ export default function ContactPage() {
               </dl>
             </div>
 
-            {/* Social */}
             <div>
               <h2 className="font-display text-2xl font-bold text-[#F5F5F5] mb-4">Follow Us</h2>
               <div className="flex gap-3">
@@ -130,34 +129,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Quote shortcut */}
+          {/* Right: contact message form */}
           <div className="bg-[#1A1B1E] border border-[#2C2D31] rounded-2xl p-8 h-fit">
-            <h2 className="font-display text-2xl font-bold text-[#F5F5F5] mb-3">
-              Request a Quote
-            </h2>
-            <p className="text-[#A0A0A8] mb-6 leading-relaxed">
-              For the fastest response, use our quote form. We respond within one business day with a detailed estimate.
-            </p>
-            <a
-              href="/get-a-quote"
-              className="block text-center w-full px-6 py-4 rounded-xl font-bold text-white gradient-brand hover:opacity-90 transition-opacity text-lg mb-4"
-            >
-              Get a Free Quote →
-            </a>
-            <p className="text-xs text-[#6B6B73] text-center">
-              Or call {BUSINESS.phone} during business hours for an immediate response.
-            </p>
-            <div className="mt-8 pt-6 border-t border-[#2C2D31] space-y-2 text-sm text-[#6B6B73]">
-              <p className="text-[#A0A0A8] font-semibold text-xs uppercase tracking-wide mb-3">What to have ready:</p>
-              {["Your vehicle year, make, and model", "Which service(s) you're interested in", "Any existing artwork or brand files", "Your approximate timeline"].map((item) => (
-                <div key={item} className="flex items-center gap-2">
-                  <svg className="w-3.5 h-3.5 text-[#E91E8C] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </div>
-              ))}
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>
